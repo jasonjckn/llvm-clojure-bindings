@@ -76,7 +76,7 @@ define i32 @main() {
 }
 #+END_SRC
 
-Dissasembly looks like this:
+Disassembly looks like this:
 #+BEGIN_SRC
 0000000100000ef0 <_main>:
    100000ef0:	50                   	push   %rax
