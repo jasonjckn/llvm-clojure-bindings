@@ -1,5 +1,10 @@
 
 
+* What is this?
+This is a compiler. When you run it, it compiles 'input.program' and produces a binary a.out.
+
+The frontend is written in clojure, and the back-end is LLVM.
+
 * How to Run
 1) Install LLVM library.
 2) lein deps
@@ -33,3 +38,42 @@ func main() Integer {
 3) Binary is executed, output is shown at bottom.
 
 [[https://github.com/jasonjckn/llvm-clojure-bindings/raw/master/pic.png]]
+
+
+* How does it work?
++ parser.clj uses a combinator parser and constructs IR#1
++ llvm.clj contains needed llvm bindings for clojure.
++ native.clj is like clj-native, but less efficient. (I couldn't get arrays of pointers working in clj-native.)
++ parser.clj is for transforming Input=>IR#1
++ ast.clj is for transforming IR#1=>IR#2
++ main.clj is for IR#2=>object file=>linking.
+
+If input program is this:
+#+BEGIN_SRC
+func main() Integer {
+    printf("hello");
+    printf("bar ");
+    return 1;
+}
+#+END_SRC
+
+IR#1 looks like this:
+#+BEGIN_SRC
+  ((:func main [] Integer
+          (:call printf "foo")
+          (:call printf "hello")
+          (:return 1)))
+#+END_SRC
+
+IR#2 looks like this (LLVM IR):
+#+BEGIN_SRC
+@0 = internal constant [4 x i8] c"foo\00"
+@1 = internal constant [9 x i8] c"hello %d\00"
+
+define i32 @main() {
+  %1 = call i32 (...)* @printf([9 x i8]* @1, i32 3)
+  %2 = call i32 (...)* @printf([5 x i8]* @2)
+  ret i32 1
+}
+#+END_SRC
+
