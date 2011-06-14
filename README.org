@@ -20,8 +20,8 @@ func main() Integer {
 
 * Program Output
 
-1) Printing of LLVM IR
-2) a.out Binary is created.
-3) Binary is executed.
+1) The intermediate representation is printed.
+2) The object file and linked binary is created.
+3) Binary is executed, output is shown at bottom.
 
 [[https://github.com/jasonjckn/llvm-clojure-bindings/raw/master/pic.png]]
