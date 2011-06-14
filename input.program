@@ -1,7 +1,7 @@
 func cos(Double) Double;
 func printf(...) Integer;
 
-func bar() Integer {
+func bar() Object {
    printf("foo");
    return 3;
 }

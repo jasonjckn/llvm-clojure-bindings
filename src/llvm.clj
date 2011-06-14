@@ -24,6 +24,7 @@
                 ["LLVMAppendBasicBlock" Pointer 2]
                 ["LLVMPositionBuilderAtEnd" Pointer 2]
                 ["LLVMTypeOf" Pointer 1]
+                ["LLVMOpaqueType" Pointer 0]
                 ["LLVMFunctionType" Pointer 4]
                 ["LLVMAddFunction" Pointer 3]]]
   (doseq [[name ret-type num-args] llvm-api]
@@ -34,6 +35,7 @@
 (defn wrap-type [clj-type]
   (let [type-map {Double (LLVMDoubleType)
                   Integer (LLVMInt32Type)
+                  Object (LLVMOpaqueType)
                   String (LLVMTypeOf (LLVMConstString "hello" 5 false))}
         lookup (type-map clj-type)]
     (cond
@@ -60,7 +62,7 @@
 (defmethod wrap-value String [v]
            (LLVMConstString v (count v) false))
 (defmethod wrap-value Integer [v]
-           (LLVMConstInt (wrap-type (class v)) v false))
+           (LLVMConstInt (wrap-type Object) v false))
 (defmethod wrap-value :default [v] v)
 
 (defn build-call [builder fn args]
