@@ -32,7 +32,7 @@
 
 
 (defn -main []
-  (let [input (slurp "input.txt")]
+  (let [input (slurp "input.program")]
    (run-test (parse-str input))
    #_ (run-test example-ast/ast1)
     ))
