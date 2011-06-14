@@ -23,8 +23,11 @@
     (println (repeat 30 \=))
     (LLVMDumpModule mymod)
     (println (repeat 30 \=))
+
     (LLVMWriteBitcodeToFile mymod "main.o")
+
     (link-and-run "main.o")
+
     (LLVMDisposeModule mymod)))
 
 

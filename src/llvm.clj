@@ -7,6 +7,7 @@
                 ["LLVMInt32Type" Pointer 0]
                 ["LLVMInt64Type" Pointer 0]
                 ["LLVMConstString" Pointer 3]
+                ["LLVMRecompileAndRelinkFunction" Pointer 2]
                 ["LLVMConstInt" Pointer 3]
                 ["LLVMConstReal" Pointer 2]
                 ["LLVMModuleCreateWithName" Pointer 1]

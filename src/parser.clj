@@ -1,22 +1,15 @@
 (ns parser
   (:use [eu.dnetlib.clojure clarsec monad]))
 
-(defn <* [a b] (let-bind [r a
-                          _ b] (result r)))
+(def p-exp (<|> natural stringLiteral))
 
-(def p-exp
-     (<|> natural
-          stringLiteral))
+(def p-return (let-bind [_ (symb "return")
+                         n p-exp]
+                        (result `(:return ~n))))
 
-(def p-return
-     (let-bind [_ (symb "return")
-                n p-exp]
-               (result `(:return ~n))))
-
-(def p-call
-     (let-bind [name identifier
-                args (parens (sep-by p-exp comma))]
-               (result `(:call ~(symbol name) ~@args))))
+(def p-call (let-bind [name identifier
+                       args (parens (sep-by p-exp comma))]
+                      (result `(:call ~(symbol name) ~@args))))
 
 (def p-stmt (<|> p-call p-return))
 
@@ -29,10 +22,10 @@
                                     (sep-by (<$> symbol identifier) comma)))
                 ret-type (<$> symbol identifier)]
                (result `(:func ~name ~params ~ret-type))))
-(def p-func
-     (let-bind [proto p-func-proto
-                body p-func-body]
-               (result (concat proto body))))
+
+(def p-func (let-bind [proto p-func-proto
+                       body p-func-body]
+                      (result (concat proto body))))
 
 (def parser (many (<|> p-func (<* p-func-proto semi))))
 
