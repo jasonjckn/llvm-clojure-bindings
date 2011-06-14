@@ -1,8 +1,9 @@
 
 
 * How to Run
-1) Install LLVM library. The code assumes its /opt/local/lib/libLLVM-2.9.dylib
-    For different paths, update jna.library.path java property.
+1) Install LLVM library. 
+   + The code assumes its /opt/local/lib/libLLVM-2.9.dylib
+   + For different paths, update jna.library.path java property.
 2) lein deps
 3) lein run
 
