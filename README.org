@@ -1,6 +1,7 @@
 
 
-* Input Program (Using Toy Language)
+* Input Program 
+Here our toy language is used as input into compiler frontend.
 #+BEGIN_SRC c
 func cos(Double) Double;
 func printf(...) Integer;
