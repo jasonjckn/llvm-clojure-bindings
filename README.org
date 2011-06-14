@@ -1,6 +1,6 @@
 
 
-* Toy Language
+* Input Program (Using Toy Language)
 #+BEGIN_SRC c
 func cos(Double) Double;
 func printf(...) Integer;
@@ -18,6 +18,10 @@ func main() Integer {
 }
 #+END_SRC
 
-* Screenshot
+* Program Output
+
+1) Printing of LLVM IR
+2) a.out Binary is created.
+3) Binary is executed.
 
 [[https://github.com/jasonjckn/llvm-clojure-bindings/raw/master/pic.png]]
