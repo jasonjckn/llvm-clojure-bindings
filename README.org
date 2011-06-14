@@ -42,8 +42,8 @@ func main() Integer {
 
 * How does it work?
 + parser.clj is for transforming Input=>IR#1 (using clarsec, a combinator parser)
-+ ast.clj is for transforming IR#1=>IR#2
-+ main.clj is for IR#2=>object file=>linking.
++ ast.clj is for transforming AST=>LLVM IR
++ main.clj is for LLVM IR=>object file=>linking.
 + llvm.clj contains needed llvm bindings for clojure.
 + native.clj is like clj-native, but less efficient. (I couldn't get arrays of pointers working in clj-native.)
 
@@ -56,7 +56,7 @@ func main() Integer {
 }
 #+END_SRC
 
-IR#1 looks like this (aka. AST):
+AST looks like this:
 #+BEGIN_SRC
   ((:func main [] Integer
           (:call printf "foo")
@@ -64,7 +64,7 @@ IR#1 looks like this (aka. AST):
           (:return 1)))
 #+END_SRC
 
-IR#2 looks like this (LLVM IR):
+LLVM IR looks like this:
 #+BEGIN_SRC
 @0 = internal constant [4 x i8] c"foo\00"
 @1 = internal constant [9 x i8] c"hello %d\00"
@@ -76,7 +76,7 @@ define i32 @main() {
 }
 #+END_SRC
 
-Disassembly looks like this:
+x86 Disassembly looks like this:
 #+BEGIN_SRC
 0000000100000ef0 <_main>:
    100000ef0:	50                   	push   %rax
