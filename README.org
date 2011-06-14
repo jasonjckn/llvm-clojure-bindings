@@ -76,3 +76,22 @@ define i32 @main() {
 }
 #+END_SRC
 
+Dissasembly looks like this:
+#+BEGIN_SRC
+0000000100000ef0 <_main>:
+   100000ef0:	50                   	push   %rax
+   100000ef1:	48 8d 3d 3c 00 00 00 	lea    0x3c(%rip),%rdi
+   100000ef8:	be 03 00 00 00       	mov    $0x3,%esi
+   100000efd:	30 c0                	xor    %al,%al
+   100000eff:	e8 26 00 00 00       	callq  100000f2a <_printf$stub>
+   100000f04:	48 8d 3d 32 00 00 00 	lea    0x32(%rip),%rdi
+   100000f0b:	30 c0                	xor    %al,%al
+   100000f0d:	e8 18 00 00 00       	callq  100000f2a <_printf$stub>
+   100000f12:	48 8d 3d 17 00 00 00 	lea    0x17(%rip),%rdi
+   100000f19:	30 c0                	xor    %al,%al
+   100000f1b:	e8 0a 00 00 00       	callq  100000f2a <_printf$stub>
+   100000f20:	31 c0                	xor    %eax,%eax
+   100000f22:	5a                   	pop    %rdx
+   100000f23:	c3                   	retq
+#+END_SRC
+
