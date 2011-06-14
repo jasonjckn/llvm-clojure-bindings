@@ -1,0 +1,15 @@
+func cos(Double) Double;
+func printf(...) Integer;
+
+func bar() Integer {
+   printf("foo");
+   return 3;
+}
+
+func main() Integer {
+    printf("hello %d", 3);
+    printf("bar ");
+    bar();
+    return 0;
+}
+
