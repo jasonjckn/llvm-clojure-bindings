@@ -56,7 +56,7 @@ func main() Integer {
 }
 #+END_SRC
 
-IR#1 looks like this:
+IR#1 looks like this (aka. AST):
 #+BEGIN_SRC
   ((:func main [] Integer
           (:call printf "foo")
