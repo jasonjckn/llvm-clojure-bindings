@@ -45,7 +45,7 @@ func main() Integer {
 + ast.clj is for transforming AST=>LLVM IR
 + main.clj is for LLVM IR=>object file=>linking.
 + llvm.clj contains needed llvm bindings for clojure.
-+ native.clj is like clj-native, but less efficient. (I couldn't get arrays of pointers working in clj-native.)
++ native.clj is a thin JNA wrapper. It's like clj-native, but less efficient. (I couldn't get arrays of pointers working in clj-native.)
 
 If input program is this:
 #+BEGIN_SRC
