@@ -5,7 +5,7 @@
 2) lein deps
 3) lein run
 
-NOTE: The code assumes LLVM is at /opt/local/lib/libLLVM-2.9.dylib For different paths, update jna.library.path java property.
+NOTE: The code assumes LLVM is at /opt/local/lib/libLLVM-2.9.dylib For different paths, update jna.library.path java property in native.clj.
 
 * Input Program 
 Here our toy language is used as input into compiler frontend.
