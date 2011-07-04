@@ -50,8 +50,8 @@ func main() Integer {
 If input program is this:
 #+BEGIN_SRC
 func main() Integer {
+    printf("foo");
     printf("hello");
-    printf("bar ");
     return 1;
 }
 #+END_SRC
